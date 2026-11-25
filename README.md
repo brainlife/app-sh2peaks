@@ -10,7 +10,7 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-lightgrey.svg" alt="MIT license"></a>
 </p>
 
-## 🧠 At a glance
+## At a glance
 
 <!-- brainlife-app:begin (generated from the App manifest; edit the manifest, not this block) -->
 
@@ -20,26 +20,26 @@ Selects the FOD image for the requested lmax from the CSD input and runs sh2peak
 
 | | |
 |---|---|
-| 📥 **Inputs** | `neuro/csd` |
-| 📤 **Outputs** | `neuro/peaks` |
-| 🐳 **Container** | `brainlife/mrtrix3:3.0_RC3` |
-| ⚙️ **Resources** | 8 CPUs · 40 GB memory · 0.5 h walltime |
-| 🔗 **Run it** | [doi.org/10.25663/brainlife.app.623](https://doi.org/10.25663/brainlife.app.623) |
+| **Inputs** | `neuro/csd` |
+| **Outputs** | `neuro/peaks` |
+| **Container** | `brainlife/mrtrix3:3.0_RC3` |
+| **Resources** | 8 CPUs · 40 GB memory · 0.5 h walltime |
+| **Run it** | [doi.org/10.25663/brainlife.app.623](https://doi.org/10.25663/brainlife.app.623) |
 
-#### 📥 Inputs
+#### Inputs
 
 | Input | Datatype | Required | Description |
 |---|---|---|---|
 | `csd` | `neuro/csd` | yes | CSD dataset with the response function and FOD images per lmax. Must contain the FOD for the selected lmax. |
 
-#### 📤 Outputs
+#### Outputs
 
 | Output | Datatype | Description |
 |---|---|---|
 | `peaks` | `neuro/peaks` | peaks.nii.gz: 4D image of peak directions (three values per peak, scaled by amplitude). |
 
 <details>
-<summary><b>⚙️ Parameters</b> (4)</summary>
+<summary><b>Parameters</b> (4)</summary>
 
 | Parameter | Type | Default | Description |
 |---|---|---|---|
@@ -52,9 +52,9 @@ Selects the FOD image for the requested lmax from the CSD input and runs sh2peak
 
 <!-- brainlife-app:end -->
 
-## 🚀 Running the App
+## Running the App
 
-### ☁️ On brainlife.io
+### On brainlife.io
 
 Open the App at [doi.org/10.25663/brainlife.app.623](https://doi.org/10.25663/brainlife.app.623), choose a `neuro/csd` dataset from your project, set the options and press **Execute**. The App writes a `neuro/peaks` dataset to your project. Use it when a downstream tool (for example TractSeg or FACT tracking) needs peak directions rather than FODs.
 
@@ -63,7 +63,7 @@ Open the App at [doi.org/10.25663/brainlife.app.623](https://doi.org/10.25663/br
 - **`threshold`** (default 0): the minimum FOD amplitude for a peak to be kept (`sh2peaks -threshold`); 0 means no threshold.
 - **`fast`** (default `false`): use `sh2peaks -fast`, which uses a precomputed direction set and is faster but less precise.
 
-### 💻 Locally
+### Locally
 
 You need [Singularity/Apptainer](https://apptainer.org/) and [`jq`](https://jqlang.github.io/jq/). The App runs in the `brainlife/mrtrix3:3.0_RC3` container.
 
@@ -91,19 +91,19 @@ You need [Singularity/Apptainer](https://apptainer.org/) and [`jq`](https://jqla
    ./main
    ```
 
-## 📦 Outputs
+## Outputs
 
 ```text
 peaks/
 └── peaks.nii.gz   4D image of peak directions: three values (x, y, z) per peak, scaled by the peak amplitude
 ```
 
-## 🩺 Troubleshooting
+## Troubleshooting
 
 - **`something went wrong. check derivatives`**: `peaks.nii.gz` was not produced. Check that the CSD input contains the FOD at the requested `lmax`.
 - **`threshold` has no effect**: this version compares `threshold` as an integer, so values that are not whole numbers are ignored.
 
-## 📚 Citing
+## Citing
 
 > [!TIP]
 > If you use this App in your work, please cite the App, the software it builds on and brainlife.io (below). GitHub's **Cite this repository** button gives the App citation in APA and BibTeX.
@@ -115,13 +115,13 @@ peaks/
 - Wasserthal et al. TractSeg - Fast and accurate white matter tract segmentation. *NeuroImage* 183:239-253 (2018). [doi:10.1016/j.neuroimage.2018.07.070](https://doi.org/10.1016/j.neuroimage.2018.07.070)
 - Hayashi S, Caron BA, Heinsfeld AS, et al. brainlife.io: a decentralized and open-source cloud platform to support neuroscience research. *Nature Methods* 21:809–813 (2024). [doi:10.1038/s41592-024-02237-2](https://doi.org/10.1038/s41592-024-02237-2)
 
-## 👥 Authors
+## Authors
 
 - Brad Caron
 
 **Contributors:** Soichi Hayashi
 
-## 💰 Funding
+## Funding
 
 [![Wellcome-226486/Z/22/Z](https://img.shields.io/badge/Wellcome-226486%2FZ%2F22%2FZ-purple.svg)](https://wellcome.org/)
 [![NIH-NINDS-U24NS140384](https://img.shields.io/badge/NIH_NINDS-U24NS140384-green.svg)](https://reporter.nih.gov/project-details/11261037)
@@ -140,6 +140,6 @@ peaks/
 
 <sub>brainlife.io is publicly funded, and acknowledging that support helps keep it running. This App was developed with support from Wellcome, the U.S. National Institutes of Health (including the BRAIN Initiative BRAIN CONNECTS program: The Axonal Projectome EXchange, U24NS140384, and the Center for Mesoscale Connectomics, UM1NS132207) and the U.S. National Science Foundation.</sub>
 
-## ⚖️ License
+## License
 
 MIT. MRtrix3 is distributed under the [Mozilla Public License 2.0](https://www.mrtrix.org/).
